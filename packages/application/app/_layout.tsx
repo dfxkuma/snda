@@ -1,5 +1,4 @@
 import { Stack } from 'expo-router/stack';
-import { Text } from 'react-native';
 import React, { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 
@@ -23,5 +22,5 @@ export default function Layout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
-  );
+    );
 }

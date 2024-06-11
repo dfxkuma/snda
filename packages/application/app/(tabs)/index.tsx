@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {ScrollView, View, Text, StyleSheet, Pressable} from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -7,8 +7,19 @@ import React from "react";
 
 export default function Tab() {
     return (
-        <View style={styles.container}>
-            <View style={styles.home}>
+        <ScrollView
+            style={styles.container}
+            horizontal={false}
+            contentContainerStyle={{alignItems: 'center'}}
+        >
+            <ScrollView
+                style={styles.home}
+                horizontal={false}
+                contentContainerStyle={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+            }}
+            >
                 <Text style={styles.mainText}>쓴다와 함께 공부를 시작하세요.</Text>
                 <View style={styles.statusBar}>
                     <Entypo name="cloud" size={24} color="black" />
@@ -18,30 +29,12 @@ export default function Tab() {
                 </View>
                 <Text style={styles.quickMenuName}>빠른 작업</Text>
                 <View style={styles.quickAction}>
-                    <View style={styles.quickActionMenu}>
-                        <MaterialIcons name="abc" size={70} color="black" />
-                        <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
-                    </View>
-                    <View style={styles.quickActionMenu}>
-                        <MaterialIcons name="abc" size={70} color="black" />
-                        <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
-                    </View>
-                    <View style={styles.quickActionMenu}>
-                        <MaterialIcons name="abc" size={70} color="black" />
-                        <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
-                    </View>
-                    <View style={styles.quickActionMenu}>
-                        <MaterialIcons name="abc" size={70} color="black" />
-                        <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
-                    </View>
-                    <View style={styles.quickActionMenu}>
-                        <MaterialIcons name="abc" size={70} color="black" />
-                        <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
-                    </View>
-                    <View style={styles.quickActionMenu}>
-                        <MaterialIcons name="abc" size={70} color="black" />
-                        <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
-                    </View>
+                    {[...Array(6)].map((_, i) => (
+                        <Pressable key={i} style={styles.quickActionMenu}>
+                            <MaterialIcons name="abc" size={70} color="black" />
+                            <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
+                        </Pressable>
+                    ))}
                 </View>
                 <Text style={styles.quickMenuName}>학습 추천</Text>
                 <View style={styles.quickMenu}>
@@ -93,8 +86,8 @@ export default function Tab() {
                     내 콘텐츠 모두 보기
                     </Text>
                 </Pressable>
-            </View>
-        </View>
+            </ScrollView>
+        </ScrollView>
     );
 }
 
@@ -102,7 +95,7 @@ const styles = StyleSheet.create({
     quickAction: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        alignItems: 'flex-start'
+        alignSelf: 'center',
     },
     quickActionMenu: {
         width: '32%',
@@ -139,7 +132,9 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     quickMenuName: {
+        alignSelf: 'flex-start',
         paddingTop: 20,
+        paddingBottom: 10,
         fontFamily: "WantedSans-Bold",
         fontSize: 20,
     },
@@ -152,6 +147,7 @@ const styles = StyleSheet.create({
         width: '90%',
     },
     statusBar: {
+        alignSelf: 'flex-start',
         flexDirection: 'row',
         alignItems: 'center',
         gap: 8,
@@ -162,20 +158,23 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     mainText: {
+        alignSelf: 'flex-start',
         fontFamily: "WantedSans-Bold",
         fontSize: 25,
     },
     home: {
+        overflow: 'hidden',
         rowGap: 10,
         flex: 1,
         padding: 10,
-        justifyContent: 'center', // 부모 요소를 수평으로 중앙에 정렬
+        maxWidth: 500,
     },
     container: {
         paddingTop: 48,
+        marginHorizontal: "auto",
+        overflow: 'hidden',
         backgroundColor: '#f8f8f8',
         flexDirection: 'row',
-        alignItems: 'center',
-        paddingLeft: 20,
+        // paddingLeft: 20,
     },
 });
