@@ -29,6 +29,7 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="scan"
                 options={{
+                    headerShown: false,
                     tabBarLabel: '스캔',
                     tabBarIcon: ({ color }) => <Ionicons name="scan" size={24} color={color} />,
                     tabBarLabelStyle: { fontFamily: 'WantedSans-Medium' }
