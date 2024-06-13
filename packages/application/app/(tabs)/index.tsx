@@ -1,26 +1,15 @@
-import {ScrollView, View, Text, StyleSheet, Pressable} from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Pressable } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome6 } from '@expo/vector-icons';
 import React from "react";
 
 export default function Tab() {
     return (
-        <ScrollView
-            style={styles.container}
-            horizontal={false}
-            contentContainerStyle={{alignItems: 'center'}}
-        >
-            <ScrollView
-                style={styles.home}
-                horizontal={false}
-                contentContainerStyle={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-            }}
-            >
-                <Text style={styles.mainText}>쓴다와 함께 공부를 시작하세요.</Text>
+        <View style={styles.container}>
+            <View style={styles.home}>
+                <Text style={styles.mainText}>중간고사까지 D-21</Text>
                 <View style={styles.statusBar}>
                     <Entypo name="cloud" size={24} color="black" />
                     <Text style={styles.statusText}>
@@ -29,19 +18,44 @@ export default function Tab() {
                 </View>
                 <Text style={styles.quickMenuName}>빠른 작업</Text>
                 <View style={styles.quickAction}>
-                    {[...Array(6)].map((_, i) => (
-                        <Pressable key={i} style={styles.quickActionMenu}>
-                            <MaterialIcons name="abc" size={70} color="black" />
-                            <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
-                        </Pressable>
-                    ))}
+                    <Pressable style={styles.quickActionMenu}>
+                        <Text style={styles.quickActionMenuText}>영어단어 암기</Text>
+                    </Pressable>
+                    <Pressable style={styles.quickActionMenu}>
+                        <Text style={styles.quickActionMenuText}>오답노트 보기</Text>
+                    </Pressable>
+                    <Pressable style={styles.quickActionMenu}>
+                        <Text style={styles.quickActionMenuText}>AI 에게 질문</Text>
+                    </Pressable>
+                    <Pressable style={styles.quickActionMenu}>
+                        <Text style={styles.quickActionMenuText}>암기과목 점검</Text>
+                    </Pressable>
+                    <Pressable style={styles.quickActionMenu}>
+                        <Text style={styles.quickActionMenuText}>시험내용 요약</Text>
+                    </Pressable>
+                    <Pressable style={styles.quickActionMenu}>
+                        <Text style={styles.quickActionMenuText}>내 노트 찾기</Text>
+                    </Pressable>
+
+
                 </View>
                 <Text style={styles.quickMenuName}>학습 추천</Text>
+                    <View style={styles.quickMenu}>
+                        <View style={styles.quickMenuRight}>
+                            <Feather name="book" size={24} color="black" />
+                            <Text style={styles.quickMenuText}>
+                                [과학] 1.역학적 시스템 오답
+                            </Text>
+                        </View>
+                        <Pressable style={styles.quickMenuButton}>
+                            <Text style={styles.quickMenuText}>바로 테스트</Text>
+                        </Pressable>
+                    </View>
                 <View style={styles.quickMenu}>
                     <View style={styles.quickMenuRight}>
                         <Feather name="book" size={24} color="black" />
                         <Text style={styles.quickMenuText}>
-                            통합사회 6/10 테스트 오답 [AI]
+                            [영어] 능률 VOCA DAY 05
                         </Text>
                     </View>
                     <Pressable style={styles.quickMenuButton}>
@@ -52,7 +66,7 @@ export default function Tab() {
                     <View style={styles.quickMenuRight}>
                         <Feather name="book" size={24} color="black" />
                         <Text style={styles.quickMenuText}>
-                            통합사회 6/10 테스트 오답 [AI]
+                            [영어] 2단원 본문 해석하기
                         </Text>
                     </View>
                     <Pressable style={styles.quickMenuButton}>
@@ -63,7 +77,7 @@ export default function Tab() {
                     <View style={styles.quickMenuRight}>
                         <Feather name="book" size={24} color="black" />
                         <Text style={styles.quickMenuText}>
-                            통합사회 6/10 테스트 오답 [AI]
+                            [컴시일] 수행평가 AI 문제
                         </Text>
                     </View>
                     <Pressable style={styles.quickMenuButton}>
@@ -74,20 +88,20 @@ export default function Tab() {
                     <View style={styles.quickMenuRight}>
                         <Feather name="book" size={24} color="black" />
                         <Text style={styles.quickMenuText}>
-                            통합사회 6/10 테스트 오답 [AI]
+                            [수학] 수(상) 중간고사 30문제
                         </Text>
                     </View>
                     <Pressable style={styles.quickMenuButton}>
                         <Text style={styles.quickMenuText}>바로 테스트</Text>
                     </Pressable>
                 </View>
-                <Pressable style={{alignSelf: 'flex-end', flexDirection: 'row'}}>
-                    <Text style={{padding: 10}}>
-                    내 콘텐츠 모두 보기
+                <Pressable style={styles.allContentButton}>
+                    <Text style={styles.allContentText}>
+                        내 콘텐츠 모두 보기
                     </Text>
                 </Pressable>
-            </ScrollView>
-        </ScrollView>
+            </View>
+        </View>
     );
 }
 
@@ -95,24 +109,29 @@ const styles = StyleSheet.create({
     quickAction: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        alignSelf: 'center',
+        justifyContent: 'center', // Center the items
     },
     quickActionMenu: {
-        width: '32%',
-        height: 100,
+        width: '30%', // Adjusted width for better spacing
+        // height: 120, // Increased height for better visibility
         borderWidth: 1,
+        padding: 5,
         borderColor: 'black',
         alignItems: 'center',
+        justifyContent: 'center', // Center content within each item
+        margin: 5, // Added margin for spacing between items
     },
     quickActionMenuText: {
         fontSize: 16,
         fontFamily: 'WantedSans-Bold',
+        textAlign: 'center', // Center text within each item
     },
     quickMenuRight: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         gap: 10,
+        flex: 1,
     },
     quickMenuButton: {
         borderRightWidth: 1,
@@ -141,10 +160,10 @@ const styles = StyleSheet.create({
     quickMenu: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-between', // Space between elements
         gap: 10,
         paddingTop: 10,
-        width: '90%',
+        width: '100%',
     },
     statusBar: {
         alignSelf: 'flex-start',
@@ -158,23 +177,35 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     mainText: {
+        marginBottom: 15,
         alignSelf: 'flex-start',
         fontFamily: "WantedSans-Bold",
         fontSize: 25,
     },
     home: {
+        width: '100%',
         overflow: 'hidden',
-        rowGap: 10,
+        rowGap: 5,
         flex: 1,
-        padding: 10,
         maxWidth: 500,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     container: {
-        paddingTop: 48,
+        paddingTop: 30,
+        width: '90%',
         marginHorizontal: "auto",
         overflow: 'hidden',
-        backgroundColor: '#f8f8f8',
         flexDirection: 'row',
-        // paddingLeft: 20,
+    },
+    allContentButton: {
+        alignSelf: 'flex-end',
+        flexDirection: 'row',
+        marginTop: 20,
+        padding: 10,
+    },
+    allContentText: {
+        fontFamily: "WantedSans-Regular",
+        fontSize: 15,
     },
 });

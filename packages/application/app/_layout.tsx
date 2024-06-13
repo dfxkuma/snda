@@ -1,5 +1,6 @@
 import { Stack } from 'expo-router/stack';
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { NativeBaseProvider } from "native-base";
 import { useFonts } from "expo-font";
 
 
@@ -19,8 +20,10 @@ export default function Layout() {
     }
 
     return (
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <NativeBaseProvider>
+          <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          </Stack>
+      </NativeBaseProvider>
     );
 }
